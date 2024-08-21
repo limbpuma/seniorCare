@@ -1,0 +1,62 @@
+---
+const TESTIMONIALS = [
+  {
+    name: "Aubrey Logan",
+    title: "CEO",
+    image: "/assets/img/testimonial/testimonial-1.jpg",
+    desc: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 45 BC, making.",
+  },
+  {
+    name: "Ryan Bruce",
+    title: "Manager",
+    image: "/assets/img/testimonial/testimonial-2.jpg",
+    desc: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 45 BC, making.",
+  },
+  {
+    name: "Carmen Cobb",
+    title: "Designer",
+    image: "/assets/img/testimonial/testimonial-3.jpg",
+    desc: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 45 BC, making.",
+  },
+];
+---
+
+<div class="flex gap-3 my-12 justify-center">
+  {
+    TESTIMONIALS.map((testimonial) => {
+      return (
+        <div class="border-[2px] border-accent p-10 max-w-[500px] grid gap-8 text-primary-dark">
+          <p class="font-ag-testimonial-text text-ag-testimonial-text italic">
+            {testimonial.desc}
+          </p>
+          <div class="font-ag-testimonial-text text-ag-testimonial-text flex justify-between ">
+            <div class="pt-6">
+              <h5 class="font-ag-h5 text-ag-h5">{testimonial.name}</h5>
+              <span class="text-ag-body-text font-ag-body-text">
+                {testimonial.title}
+              </span>
+            </div>
+            <div class="img-container || relative size-[142px] border-none rounded-full overflow-hidden bg-slate-200 ">
+              <img
+                src="/public/assets/img/senior_couple__in_the_park.webp"
+                alt=""
+                class="object-cover w-full h-full"
+              />
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+    .img-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
