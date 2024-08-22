@@ -6,16 +6,6 @@ export default {
       colors: {
         black: '#161616',
         white: '#ffffff',
-<<<<<<< HEAD
-        "light-gray": '#bababa', 
-        "gray-blue": '#bfd2d7', 
-        "soft-blue": '#5a8bba', 
-        "deep-blue": '#084487', 
-        "soft-orange": '#F2B98A',
-        "soft-beige": '#ffedcc', 
-        
-        primary: '#084487', 
-=======
         "light-gray": '#bababa',
         "gray-blue": '#bfd2d7',
         "soft-blue": '#5a8bba',
@@ -24,7 +14,6 @@ export default {
         "soft-orange": '#F2B98A',
         primary: '#084487',
         'primary-dark': '#004A61',
->>>>>>> a3d1237 (mosaic & testimonial)
         accent: '#FFDAA3',
       },
       boxShadow: {

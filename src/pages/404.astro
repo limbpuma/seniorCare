@@ -1,11 +1,31 @@
 ---
+import ContactForm from "@/components/common/ContactForm.astro";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import Testimonial from "@/components/common/Testimonial.astro";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="404 - Page not found">
-    <!-- <GalleryMosaic class="justify-center" srcs={["/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg"]}/> -->
+    <ContactForm />
 
-    <Testimonial />
+    <GalleryMosaic class="justify-center" srcs={["/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg", "/assets/img/Bild1.jpg"]}/>
+
+    <Testimonial testimonials={[{
+        name: "Aubrey Logan",
+        title: "CEO",
+        image: "/assets/img/testimonial/testimonial-1.jpg",
+        desc: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 45 BC, making.",
+      },
+      {
+        name: "Ryan Bruce",
+        title: "Manager",
+        image: "/assets/img/testimonial/testimonial-2.jpg",
+        desc: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 45 BC, making.",
+      },
+      {
+        name: "Carmen Cobb",
+        title: "Designer",
+        image: "/assets/img/testimonial/testimonial-3.jpg",
+        desc: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature 45 BC, making.",
+      }]} />
 </Layout>
