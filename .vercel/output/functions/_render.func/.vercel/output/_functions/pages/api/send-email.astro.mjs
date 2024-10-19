@@ -1,34 +1,46 @@
 import { Resend } from 'resend';
+import dotenv from 'dotenv';
 export { renderers } from '../../renderers.mjs';
 
-const resend = new Resend("re_UfZeDnky_DEB3q7oFVRcjsZFtVabrGB2o");
+dotenv.config();
+const resend = new Resend(process.env.RESEND_API_KEY);
 const POST = async ({ request }) => {
-  const data = await request.formData();
-  const name = data.get("name");
-  const email = data.get("email");
-  const phone = data.get("phone");
-  const subject = data.get("subject");
-  const message = data.get("message");
-  const logoUrl = "https://seniorcare-rust.vercel.app/assets/logo/logo_integra.webp";
-  const websiteUrl = "https://seniorcare-rust.vercel.app/";
-  const plainText = `
-  Neue Kontaktformular-Einreichung
-
-  Name: ${name}
-  E-Mail: ${email}
-  Telefon: ${phone}
-  Betreff: ${subject}
-  Nachricht: ${message}
-
-  © 2023 Integra GmbH. Alle Rechte vorbehalten.
-  Website: ${websiteUrl}
-  Adresse: Musterstraße 123, 12345 Musterstadt
-  Öffnungszeiten: Mo-Fr 9:00-18:00 Uhr
-  Kontakt: +49 123 456 7890
-  `.trim();
+  const headers = new Headers();
+  headers.set("Access-Control-Allow-Origin", "*");
+  headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+  headers.set("Access-Control-Allow-Headers", "Content-Type");
+  if (request.method === "OPTIONS") {
+    return new Response(null, {
+      status: 204,
+      headers
+    });
+  }
   try {
-    const { data: data2, error } = await resend.emails.send({
-      from: "Your Name <onboarding@resend.dev>",
+    const data = await request.formData();
+    const name = data.get("name");
+    const email = data.get("email");
+    const phone = data.get("phone");
+    const subject = data.get("subject");
+    const message = data.get("message");
+    const logoUrl = "https://pflegedienst-integra.de/assets/logo/logo_integra.webp";
+    const websiteUrl = "https://pflegedienst-integra.de/";
+    const plainText = `
+    Neue Kontaktformular-Einreichung
+
+    Name: ${name}
+    E-Mail: ${email}
+    Telefon: ${phone}
+    Betreff: ${subject}
+    Nachricht: ${message}
+
+    © 2024 Integra GmbH. Alle Rechte vorbehalten.
+    Website: ${websiteUrl}
+    Adresse: Flughafenstraße 404, 44328 Dortmund
+    Öffnungszeiten: Mo-Fr 9:00-15:00 Uhr
+    Kontakt: 0231 9125000
+    `.trim();
+    const { data: emailData, error } = await resend.emails.send({
+      from: "info@mail-pflegedienst-integra.de",
       to: ["info@pflegedienst-integra.de"],
       subject: `New contact form submission: ${subject}`,
       text: plainText,
@@ -146,21 +158,18 @@ const POST = async ({ request }) => {
     if (error) {
       return new Response(JSON.stringify({ error: error.message }), {
         status: 400,
-        headers: { "Content-Type": "application/json" }
+        headers
       });
     }
-    return new Response(JSON.stringify({ success: true, data: data2 }), {
+    return new Response(JSON.stringify({ success: true, emailData }), {
       status: 200,
-      headers: { "Content-Type": "application/json" }
+      headers
     });
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: "An unexpected error occurred" }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" }
-      }
-    );
+    return new Response(JSON.stringify({ error: "An unexpected error occurred" }), {
+      status: 500,
+      headers
+    });
   }
 };
 

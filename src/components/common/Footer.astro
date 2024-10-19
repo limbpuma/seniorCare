@@ -4,15 +4,15 @@ import Logo from "./Logo.astro";
 import texts from "@/utils/texts.json";
 
 const Navlinks = [
-  { name: "About", href: "about" },
-  { name: "Services", href: "services" },
-  { name: "Contact", href: "contact" },
-  { name: "FAQ", href: "faq" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Contact", href: "/contact" },
+  { name: "FAQ", href: "/faq" },
 ];
 const Legallinks = [
-  { name: "Impressum", href: "legal" },
-  { name: "Datenschutz", href: "privacypolicy" },
-  { name: "Agbs", href: "termsconditions" },
+  { name: "Impressum", href: "/legal" },
+  { name: "Datenschutz", href: "/privacypolicy" },
+  { name: "AGB", href: "/termsconditions" },
 ];
 
 const footerTexts = texts.footer;
@@ -39,7 +39,7 @@ const footerTexts = texts.footer;
           <Icon
             icons={[
               { name: "facebook", href: footerTexts.socialLinks.facebook },
-              { name: "twitter", href: footerTexts.socialLinks.twitter },
+              
               { name: "instagram", href: footerTexts.socialLinks.instagram },
             ]}
             size="small"
@@ -105,16 +105,16 @@ const footerTexts = texts.footer;
     <div
       class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white font-ag-body-text text-ag-body-text"
     >
-      <span>{footerTexts.copyright}</span>
-      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
+      
+      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4 sm:order-2">
         {
-          ["Impressum", "Datenschutz", "Agbs"].map((linkName) => {
+          ["Impressum", "Datenschutz", "AGB"].map((linkName) => {
             const link = Legallinks.find(
               (l) => l.name.toLowerCase() === linkName.toLowerCase(),
             );
             return (
               link && (
-                <a href={link.href} class="hover:underline">
+                <a href={link.href} class="hover:underline text-soft-orange">
                   {link.name}
                 </a>
               )
@@ -122,6 +122,7 @@ const footerTexts = texts.footer;
           })
         }
       </div>
+      <span class="sm:order-1 ">{footerTexts.copyright}</span>
     </div>
   </div>
 </footer>

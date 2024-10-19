@@ -2,11 +2,11 @@
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { t as texts, b as $$Layout } from '../chunks/Layout_xiEg-xPt.mjs';
-import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_CdSicD9A.mjs';
-import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_CN4R9OKm.mjs';
-import { a as $$Section } from '../chunks/TextBlock_DffnNgfO.mjs';
-import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_8gMbO7ab.mjs';
+import { t as texts, b as $$Layout } from '../chunks/Layout_CtikhUCV.mjs';
+import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_BgTFSxeI.mjs';
+import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_IBC1ujTw.mjs';
+import { a as $$Section } from '../chunks/TextBlock_D5GKfJzt.mjs';
+import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_mu9JgQYm.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();

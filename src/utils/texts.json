@@ -69,7 +69,7 @@
     "copyright": "© 2024 Pflegedienst Integra Gerling GmbH. Alle Rechte vorbehalten.",
     "socialLinks": {
       "facebook": "https://www.facebook.com/pflegedienst.integra.dortmund",
-      "twitter": "https://www.facebook.com/pflegedienst.integra.dortmund",
+    
       "instagram": "https://www.instagram.com/pflegedienst.integra/"
     }
   },
@@ -95,7 +95,7 @@
       ],
       "stats": [
         { "number": "1k+", "label": "Betreute Personen" },
-        { "number": "10+", "label": "Jahre Erfahrung" }
+        { "number": "20+", "label": "Jahre Erfahrung" }
       ],
       "buttonText": "Jetzt Termin buchen",
       "description": "Integra bietet maßgeschneiderte Pflege, die auf die individuellen Bedürfnisse unserer Klientinnen und Klienten abgestimmt ist. Unser Ziel ist es, die Unabhängigkeit und Lebensqualität der Menschen zu fördern.",
@@ -186,7 +186,7 @@
       "city": "Scharnhorst Dortmund",
       "buttonText": "Standort anzeigen",
       "stats": [
-        { "value": "10+", "label": "Jahre Erfahrung" },
+        { "value": "20+", "label": "Jahre Erfahrung" },
         { "value": "1000+", "label": "Betreute Haushalte" },
         { "value": "100+", "label": "Pflegekräfte" },
         { "value": "98%", "label": "Zufriedene Klientinnen und Klienten" }
@@ -525,7 +525,11 @@
         {
           "question": "Bieten Sie Ausbildungsmöglichkeiten an?",
           "answer": "Ja, bei Pflegedienst Integra bieten wir Ausbildungsplätze für angehende Pflegefachkräfte an. Wenn Sie Interesse an einer Ausbildung haben, können Sie sich über unser Kontaktformular bewerben. Wir unterstützen Sie bei Ihrer Karriere in der Pflege."
-        }
+        },
+        {
+          "question": "Bieten Sie Jobmöglichkeiten an?",
+          "answer": "Ja, wir sind regelmäßig auf der Suche nach qualifizierten Pflegekräften. Wenn Sie Interesse haben, rufen Sie uns bitte an oder schreiben Sie uns eine E-Mail für weitere Informationen."
+}
       ],
       "contactForm": {
         "title": "Haben Sie noch Fragen?",

@@ -11,7 +11,7 @@
   },
   "privacypolicy": {
     "banner": {
-      "title": "Datenschutz",
+      "title": "Daten- schutz",
       "backgroundImage": "/assets/img/doctor_senior_care_help_6.webp",
       "breadcrumbs": [
         { "label": "Home", "url": "/" },
@@ -21,7 +21,7 @@
   },
   "termsconditions": {
     "banner": {
-      "title": "Geschäftsbedingungen",
+      "title": "AGB",
       "backgroundImage": "/assets/img/doctor_senior_care_help_6.webp",
       "breadcrumbs": [
         { "label": "Home", "url": "/" },

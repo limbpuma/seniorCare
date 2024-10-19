@@ -6,12 +6,13 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 
+
 const bannerSliderSettings = {
   modules: [Autoplay, FreeMode],
   spaceBetween: 30,
   slidesPerView: "auto",
   freeMode: true,
-  loop: true,
+  loop: false,
   speed: 3000,
   autoplay: {
     delay: 0,
@@ -24,6 +25,7 @@ const imageCarouselSettings = {
   modules: [Autoplay, FreeMode, Navigation],
   spaceBetween: 40,
   slidesPerView: "auto",
+  slidesPerGroup: 1,
   freeMode: true,
   loop: false,
   speed: 3000,

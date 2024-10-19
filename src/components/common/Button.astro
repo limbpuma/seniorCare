@@ -1,6 +1,8 @@
 ---
 type Props = {
   href?: string;
+  target?: string;
+  rel?: string;
   type?: "button" | "submit" | "reset";
   class?: string;
   variant?: "primary" | "secondary" | "accent";
@@ -11,6 +13,8 @@ type Props = {
 
 const {
   href,
+  target,
+  rel, 
   class: className,
   variant = "primary",
   size = "medium",
@@ -49,7 +53,7 @@ const classes = [
 ---
 
 {href ? (
-  <a href={href} class:list={classes} {...props}>
+  <a href={href} target={target} rel={target === "_blank" ? "noopener noreferrer" : rel} class:list={classes} {...props}>
     <span
       class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
     >
