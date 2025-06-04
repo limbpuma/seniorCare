@@ -42,14 +42,14 @@ id="ImageCarrousel-section" class="relative" animation="zoom-in">
       >
         <div id="carousel-description" class="sr-only">
           Interaktive Bildergalerie mit {images.length} Bildern. Verwenden Sie die Navigationstasten oder wischen Sie, um durch die Bilder zu navigieren.
-        </div>
-        <ReactSwiperSlider
+        </div>        <ReactSwiperSlider
           slides={images}
           imgClass={imagenclases}
           textClass={textclasses}
           wrapperClass={wrapperClasses}
           isImageSlider={true}
           divType="flex-col"
+          ariaLabel="Allgemeine Dienstleistungsbilder"
           client:load
         />
       </div>

@@ -8,13 +8,13 @@ const wrapperClasses = "flex items-center gap-4 sm:gap-12";
 const { slides } = Astro.props;
 ---
 
-<div class="bg-soft-orange py-12 w-full">
-  <ReactSwiperSlider
+<div class="bg-soft-orange py-12 w-full">  <ReactSwiperSlider
     slides={slides}
     iconClass={iconClasses}
     textClass={textClasses}
     wrapperClass={wrapperClasses}
     divType="flex-center"
+    ariaLabel="Statistik und Leistungsindikatoren"
     client:load
   />
 </div>

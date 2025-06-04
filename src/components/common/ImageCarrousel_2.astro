@@ -69,8 +69,7 @@ animation="zoom-in"
         </button>
       </div>
     </div>
-    <div class="w-full relative">
-      <ReactSwiperSlider
+    <div class="w-full relative">      <ReactSwiperSlider
         slides={images}
         imgClass={imageClasses}
         titleClass={titleClasses}
@@ -78,6 +77,7 @@ animation="zoom-in"
         wrapperClass={wrapperClasses}
         isImageSlider={false}
         divType="flex-col"
+        ariaLabel="Team und Mitarbeiterbilder"
         client:load
       />
     </div>

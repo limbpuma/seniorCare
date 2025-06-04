@@ -60,6 +60,7 @@ const ReactSwiperSlider = ({
   textClass = "",
   titleClass = "",
   wrapperClass = "",
+  ariaLabel = "Bildergalerie",
 }) => {
   const settings = isImageSlider ? imageCarouselSettings : bannerSliderSettings;
 
@@ -69,9 +70,8 @@ const ReactSwiperSlider = ({
     "flex-row": "flex items-center justify-start text-left p-4",
   };
 
-  const selectedDivClass = divTypes[divType] || divTypes["flex-center"];
-  return (
-    <Swiper {...settings} role="region" aria-label="Bildergalerie">
+  const selectedDivClass = divTypes[divType] || divTypes["flex-center"];  return (
+    <Swiper {...settings} aria-label={ariaLabel}>
       {slides.map((slide, index) => (
         <SwiperSlide key={index} style={{ width: "auto" }} role="group" aria-label={`Bild ${index + 1} von ${slides.length}`}>
           <div className="relative">

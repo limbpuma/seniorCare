@@ -102,9 +102,8 @@ const defaultAriaLabels: Record<string, string> = {
         title={title}
       >
         {IconComponent}
-      </a>
-    ) : (
-      <span class="inline-block" aria-label={ariaLabel} title={title}>
+      </a>    ) : (
+      <span class="inline-block" title={title}>
         {IconComponent}
       </span>
     );

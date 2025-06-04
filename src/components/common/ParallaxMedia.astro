@@ -11,6 +11,8 @@ interface Props {
   videoDescription?: string;
   autoplay?: boolean;
   preload?: string;
+  transcriptUrl?: string; // URL to video transcript
+  captionTrack?: string; // URL to WebVTT caption file
 }
 
 const { 
@@ -22,7 +24,9 @@ const {
   posterSrc,
   videoDescription,
   autoplay = true,
-  preload = "metadata"
+  preload = "metadata",
+  transcriptUrl,
+  captionTrack
 } = Astro.props;
 ---
         
@@ -36,20 +40,55 @@ const {
       class="object-cover w-full h-full parallax-image"
       loading="eager"
     />
-  ) : (    <video
-      class="object-cover w-full h-full parallax-image"
-      autoplay={autoplay}
-      loop
-      muted
-      playsinline
-      poster={posterSrc}
-      preload={preload}
-      aria-label={videoDescription || "Hintergrundvideo"}
-      aria-hidden="true"
-    >
-      <source src={src as string} type="video/webm" />
-      <source src={src as string} type="video/mp4" />
-      <p>Ihr Browser unterstützt das Video-Format nicht. {videoDescription && `Beschreibung: ${videoDescription}`}</p>
-    </video>
+  ) : (
+    <>
+      <video
+        class="object-cover w-full h-full parallax-image"
+        autoplay={autoplay}
+        loop
+        muted
+        playsinline
+        poster={posterSrc}
+        preload={preload}
+        aria-label={videoDescription || "Hintergrundvideo"}
+        aria-describedby={transcriptUrl ? "video-transcript-link" : undefined}
+      >
+        <source src={src as string} type="video/webm" />
+        <source src={src as string} type="video/mp4" />
+        {captionTrack && (
+          <track
+            kind="captions"
+            src={captionTrack}
+            srclang="de"
+            label="Deutsche Untertitel"
+            default
+          />
+        )}
+        <p>
+          Ihr Browser unterstützt das Video-Format nicht. 
+          {videoDescription && ` Videobeschreibung: ${videoDescription}`}
+          {transcriptUrl && (
+            <span>
+              {" "}
+              <a href={transcriptUrl} target="_blank" rel="noopener noreferrer">
+                Vollständige Transkription anzeigen
+              </a>
+            </span>
+          )}
+        </p>
+      </video>
+      
+      {/* Hidden transcript link for screen readers */}
+      {transcriptUrl && (
+        <div class="sr-only" id="video-transcript-link">
+          <p>
+            Transkription verfügbar: 
+            <a href={transcriptUrl} target="_blank" rel="noopener noreferrer">
+              Vollständige Transkription des Videos öffnen (neues Fenster)
+            </a>
+          </p>
+        </div>
+      )}
+    </>
   )}
 </div>

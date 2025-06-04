@@ -32,14 +32,14 @@ animation="zoom-in">
       </p>
       <h2 class="text-ag-h3 font-ag-h3 font-bold text-white">{title}</h2>
     </div>
-    <div class="w-full relative">
-      <ReactSwiperSlider
+    <div class="w-full relative">      <ReactSwiperSlider
         slides={offerings}
         imgClass={imageClasses}
         textClass={textClasses}
         wrapperClass={wrapperClasses}
         isImageSlider={true}
         divType="flex-col"
+        ariaLabel="Spezielle Dienstleistungsangebote"
         client:load
       />
     </div>
