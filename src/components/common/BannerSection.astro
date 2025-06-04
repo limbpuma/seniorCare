@@ -22,7 +22,7 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 <section
   class="relative py-16 bg-cover bg-center bg-no-repeat"
   style={`background-image: url(${backgroundImage});`}
-  role="banner"
+  role="region"
   aria-label={`Seitenbanner für ${title}`}
 >
   <div 
@@ -35,14 +35,13 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
       <ol class="list-none p-0 inline-flex" role="list">
         {
           breadcrumbs.map((item, index) => (
-            <li class="flex items-center" role="listitem">
-              {index > 0 && <span class="mx-2 text-gray-300" aria-hidden="true">/</span>}
+            <li class="flex items-center" role="listitem">              {index > 0 && <span class="mx-2 text-gray-200" aria-hidden="true">/</span>}
               <a
                 href={item.url}
                 class={
                   index === breadcrumbs.length - 1
-                    ? "text-gray-300 text-body-text font-body-text"
-                    : "text-white text-body-text font-body-text hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                    ? "text-gray-200 text-body-text font-body-text"
+                    : "text-white text-body-text font-body-text hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
                 }
                 aria-current={index === breadcrumbs.length - 1 ? "page" : undefined}
               >

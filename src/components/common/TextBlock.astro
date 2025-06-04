@@ -29,7 +29,7 @@ const {
   descriptionBold,
   testimonial,
   alignment = 'left',
-  textColor = 'text-deep-blue',
+  textColor = 'text-primary-700',
   buttonText,
   buttonVariant = "primary",
   buttonSize = "medium",
@@ -58,36 +58,36 @@ const secondTitleTag = useSemanticHeadings ? getHeadingTag(headingLevel + (subti
 const thirdTitleTag = useSemanticHeadings ? getHeadingTag(headingLevel + (subtitle ? 3 : 2)) : 'h4';
 ---
 
-<div class={`${alignmentClass} ${textColor} max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 `}>
+<div class={`${alignmentClass} ${textColor} max-w-content mx-auto px-spacing-4 sm:px-spacing-6 lg:px-spacing-8`}>
   {subtitle && (
-    <Fragment set:html={`<${subtitleTag} class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4${useSemanticHeadings ? ' text-gray-600' : ''}">${subtitle}</${subtitleTag}>`} />
+    <Fragment set:html={`<${subtitleTag} class="text-subtitle font-medium mb-spacing-2 sm:mb-spacing-3 md:mb-spacing-4${useSemanticHeadings ? ' text-neutral-600' : ''}">${subtitle}</${subtitleTag}>`} />
   )}
   {title && (
-    <Fragment set:html={`<${titleTag} class="text-ag-h4 sm:text-ag-h3 md:text-ag-h2 lg:text-[56px] xl:text-[60px] font-ag-h2 mb-4 sm:mb-6 md:mb-8 leading-tight">${title}</${titleTag}>`} />
+    <Fragment set:html={`<${titleTag} class="text-h4 sm:text-h3 md:text-h2 lg:text-[56px] xl:text-[60px] font-bold mb-spacing-4 sm:mb-spacing-6 md:mb-spacing-8 leading-tight">${title}</${titleTag}>`} />
   )}
   {secondTitle && (
-    <Fragment set:html={`<${secondTitleTag} class="text-ag-h5 sm:text-ag-h4 md:text-ag-h3 lg:text-[40px] xl:text-[44px] font-ag-h3 mb-3 sm:mb-4 md:mb-6 leading-tight">${secondTitle}</${secondTitleTag}>`} />
+    <Fragment set:html={`<${secondTitleTag} class="text-h5 sm:text-h4 md:text-h3 lg:text-[40px] xl:text-[44px] font-semibold mb-spacing-3 sm:mb-spacing-4 md:mb-spacing-6 leading-tight">${secondTitle}</${secondTitleTag}>`} />
   )}
   {thirdTitle && (
-    <Fragment set:html={`<${thirdTitleTag} class="text-ag-body-text sm:text-ag-h5 md:text-ag-h4 lg:text-[32px] xl:text-[34px] font-ag-h4 mb-2 sm:mb-3 md:mb-4 leading-tight">${thirdTitle}</${thirdTitleTag}>`} />
+    <Fragment set:html={`<${thirdTitleTag} class="text-body sm:text-h5 md:text-h4 lg:text-[32px] xl:text-[34px] font-medium mb-spacing-2 sm:mb-spacing-3 md:mb-spacing-4 leading-tight">${thirdTitle}</${thirdTitleTag}>`} />
   )}
   {description && (
-    <p class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
+    <p class="text-body font-normal mb-spacing-6 sm:mb-spacing-8 md:mb-spacing-10 max-w-prose mx-auto leading-relaxed">
       {description}
     </p>
   )}
   {descriptionBold && (
-    <p class="font-bold text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
+    <p class="font-semibold text-body mb-spacing-6 sm:mb-spacing-8 md:mb-spacing-10 max-w-prose mx-auto leading-relaxed">
       {descriptionBold}
     </p>
   )}
   {testimonial && (
-    <blockquote class="text-ag-testimonial-text font-ag-testimonial-text italic mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto">
+    <blockquote class="text-body-lg font-normal italic mb-spacing-6 sm:mb-spacing-8 md:mb-spacing-10 max-w-testimonial mx-auto leading-relaxed border-l-4 border-primary-200 pl-spacing-6 text-neutral-700">
       <p>"{testimonial}"</p>
     </blockquote>
   )}
   {buttonText && (
-    <div class={`mt-6 sm:mt-8 md:mt-10 sm:mx-auto ${alignment === 'center' ? 'text-center' : ''}`}>
+    <div class={`mt-spacing-6 sm:mt-spacing-8 md:mt-spacing-10 sm:mx-auto ${alignment === 'center' ? 'text-center' : ''}`}>
       <Button
         href={buttonHref}
         variant={buttonVariant}

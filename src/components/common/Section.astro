@@ -33,26 +33,26 @@ const {
 
 const backgroundClasses: Record<BackgroundType, string> = {
   white: "bg-white",
-  primary: "bg-deep-blue",
-  primaryLight: "bg-primary-light",
-  accent: "bg-accent",
+  primary: "bg-primary-700",
+  primaryLight: "bg-primary-50",
+  accent: "bg-accent-500",
   transparent: "bg-transparent",
 };
 
 const paddingClasses: Record<PaddingType, string> = {
   none: "",
-  xs: "py-2 px-2 sm:py-2 sm:px-4 md:py-3 md:px-6 lg:py-3 lg:px-6 xl:py-4 xl:px-8 2xl:py-4 2xl:px-8",
-  small: "py-3 px-3 sm:py-5 sm:px-7 md:py-6 md:px-8 lg:py-7 lg:px-9 xl:py-8 xl:px-10 2xl:py-9 2xl:px-11",
-  medium: "py-6 px-4 sm:py-10 sm:px-8 md:py-12 md:px-10 lg:py-14 lg:px-12 xl:py-16 xl:px-14 2xl:py-18 2xl:px-16",
-  large: "py-8 px-4 sm:py-16 sm:px-8 md:py-20 md:px-10 lg:py-24 lg:px-12 xl:py-28 xl:px-14 2xl:py-32 2xl:px-16",
-  xl: "py-10 px-4 sm:py-20 sm:px-8 md:py-24 md:px-10 lg:py-28 lg:px-12 xl:py-32 xl:px-14 2xl:py-36 2xl:px-16",
+  xs: "py-spacing-2 px-spacing-2 sm:py-spacing-2 sm:px-spacing-4 md:py-spacing-3 md:px-spacing-6 lg:py-spacing-3 lg:px-spacing-6 xl:py-spacing-4 xl:px-spacing-8 2xl:py-spacing-4 2xl:px-spacing-8",
+  small: "py-spacing-3 px-spacing-3 sm:py-spacing-5 sm:px-spacing-7 md:py-spacing-6 md:px-spacing-8 lg:py-spacing-7 lg:px-spacing-9 xl:py-spacing-8 xl:px-spacing-10 2xl:py-spacing-9 2xl:px-spacing-11",
+  medium: "py-spacing-6 px-spacing-4 sm:py-spacing-10 sm:px-spacing-8 md:py-spacing-12 md:px-spacing-10 lg:py-spacing-14 lg:px-spacing-12 xl:py-spacing-16 xl:px-spacing-14 2xl:py-spacing-18 2xl:px-spacing-16",
+  large: "py-spacing-8 px-spacing-4 sm:py-spacing-16 sm:px-spacing-8 md:py-spacing-20 md:px-spacing-10 lg:py-spacing-24 lg:px-spacing-12 xl:py-spacing-28 xl:px-spacing-14 2xl:py-spacing-32 2xl:px-spacing-16",
+  xl: "py-spacing-10 px-spacing-4 sm:py-spacing-20 sm:px-spacing-8 md:py-spacing-24 md:px-spacing-10 lg:py-spacing-28 lg:px-spacing-12 xl:py-spacing-32 xl:px-spacing-14 2xl:py-spacing-36 2xl:px-spacing-16",
 };
 
 const widthClasses: Record<WidthType, string> = {
   full: "w-full",
-  wide: "w-full max-w-7xl mx-auto px-2 sm:px-6 lg:px-8",
-  medium: "w-full max-w-5xl mx-auto px-2 sm:px-6 lg:px-8",
-  narrow: "w-full max-w-3xl mx-auto px-2 sm:px-6 lg:px-8",
+  wide: "w-full max-w-container mx-auto px-spacing-2 sm:px-spacing-6 lg:px-spacing-8",
+  medium: "w-full max-w-content mx-auto px-spacing-2 sm:px-spacing-6 lg:px-spacing-8",
+  narrow: "w-full max-w-prose mx-auto px-spacing-2 sm:px-spacing-6 lg:px-spacing-8",
 };
 
 const animationClass = animation !== "none" ? `${animation} animate-on-scroll` : "";
@@ -60,7 +60,7 @@ const animationClass = animation !== "none" ? `${animation} animate-on-scroll` :
 const innerClasses = [
   paddingClasses[padding],
   widthClasses[width],
-  "transition-all duration-300 ease-in-out will-change-auto",
+  "transition-all duration-transition-normal ease-transition-default will-change-auto",
   animationClass,
   className,
 ].filter(Boolean);

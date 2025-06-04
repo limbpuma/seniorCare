@@ -16,10 +16,18 @@ interface Props {
 
 const { srcs, subtitle, title, description, buttonText, altTexts } = Astro.props;
 
-// Generate default alt texts if not provided
+// Generate descriptive alt texts if not provided
 const generateDefaultAltTexts = (srcs: string[]) => {
+  const descriptiveTexts = [
+    "Professionelle Pflegekraft beim einfühlsamen Gespräch mit einer Seniorin in vertrauter häuslicher Atmosphäre",
+    "Qualifizierte Krankenschwester bei der medizinischen Betreuung - individuelle Pflege mit menschlicher Wärme", 
+    "Erfahrene Pflegekraft beim achtsamen Umgang mit einem Senior - Würde und Respekt im Mittelpunkt",
+    "Kompetente medizinische Versorgung zu Hause - unser Pflegeteam sorgt für Sicherheit und Wohlbefinden",
+    "Vertrauensvolle Beziehung zwischen Pflegekraft und Senior - gemeinsam für mehr Lebensqualität im Alter"
+  ];
+  
   return srcs.map((_, index) => 
-    `Pflegedienst Integra - Professionelle Pflege und Betreuung, Bild ${index + 1}`
+    descriptiveTexts[index] || `Pflegedienst Integra - Professionelle Pflege und Betreuung, Bild ${index + 1}`
   );
 };
 
