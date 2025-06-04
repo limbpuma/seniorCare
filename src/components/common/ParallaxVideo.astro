@@ -13,9 +13,8 @@ interface Props {
   textColor?: string;
   buttonHref?: string;
   buttonSize?: "small" | "medium" | "large";
-  buttonVariant?: "primary" | "secondary" | "accent";
-  buttonText?: string;
-  buttonColor?: string;  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  buttonVariant?: "primary" | "secondary" | "accent";  buttonText?: string;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   videoDescription?: string;
   preload?: string;
   isHero?: boolean; // New prop to determine if this is the main hero section
@@ -28,12 +27,12 @@ const {
   videoSrc, 
   posterSrc, 
   alignment = "center",
-  textColor = "white",
+    textColor = "white",
   buttonHref, 
   buttonSize, 
   buttonVariant, 
   buttonText,
-  buttonColor,  headingLevel = 1,
+  headingLevel = 1,
   videoDescription,
   preload,
   isHero = false

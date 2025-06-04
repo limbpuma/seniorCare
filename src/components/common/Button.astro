@@ -5,13 +5,14 @@ type Props = {
   rel?: string;
   type?: "button" | "submit" | "reset";
   class?: string;
-  variant?: "primary" | "secondary" | "accent";
-  size?: "small" | "medium" | "large";
+  variant?: "primary" | "secondary" | "accent" | "ghost" | "outline";
+  size?: "small" | "medium" | "large" | "touch";
   fullWidth?: boolean;
   flex?: boolean;
   ariaLabel?: string;
   ariaDescribedBy?: string;
   disabled?: boolean;
+  loading?: boolean;
 };
 
 const {
@@ -26,28 +27,71 @@ const {
   ariaLabel,
   ariaDescribedBy,
   disabled = false,
+  loading = false,
   ...props
 } = Astro.props;
 
+// Enhanced variant system using new design tokens
 const variantClasses = {
-  primary:
-    "text-white bg-deep-blue hover:bg-soft-blue focus:ring-4 focus:ring-blue-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed",
-  secondary:
-    "text-deep-blue bg-white hover:bg-gray-blue focus:ring-4 focus:ring-gray-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed",
-  accent:
-    "text-deep-blue bg-accent hover:bg-soft-orange focus:ring-4 focus:ring-orange-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed",
+  primary: [
+    "text-white bg-primary-900 hover:bg-primary-800 active:bg-primary-950",
+    "focus:ring-4 focus:ring-primary-300 focus:outline-none",
+    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary-900",
+    "shadow-button hover:shadow-lg transition-all duration-200"
+  ].join(" "),
+  
+  secondary: [
+    "text-primary-900 bg-surface-primary hover:bg-surface-secondary active:bg-surface-tertiary",
+    "border-2 border-primary-900 hover:border-primary-800 active:border-primary-950",
+    "focus:ring-4 focus:ring-primary-300 focus:outline-none",
+    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-surface-primary",
+    "shadow-button hover:shadow-lg transition-all duration-200"
+  ].join(" "),
+  
+  accent: [
+    "text-primary-900 bg-accent-400 hover:bg-accent-500 active:bg-accent-600",
+    "focus:ring-4 focus:ring-accent-200 focus:outline-none",
+    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-accent-400",
+    "shadow-button hover:shadow-lg transition-all duration-200"
+  ].join(" "),
+  
+  ghost: [
+    "text-primary-900 bg-transparent hover:bg-surface-secondary active:bg-surface-tertiary",
+    "focus:ring-4 focus:ring-primary-300 focus:outline-none",
+    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+    "transition-all duration-200"
+  ].join(" "),
+  
+  outline: [
+    "text-primary-900 bg-transparent hover:bg-primary-50 active:bg-primary-100",
+    "border-2 border-border-primary hover:border-primary-900 active:border-primary-950",
+    "focus:ring-4 focus:ring-primary-300 focus:outline-none",
+    "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+    "transition-all duration-200"
+  ].join(" ")
 };
 
+// Enhanced size system with proper touch targets
 const sizeClasses = {
-  small: "text-sm px-4 py-2",
-  medium: "text-ag-button-text px-8 py-4",
-  large: "text-lg px-12 py-6",
+  small: "text-sm px-3 py-2 min-h-[2.25rem]", // 36px minimum height
+  medium: "text-ag-button-text px-6 py-3 min-h-touch-md", // 48px minimum height  
+  large: "text-lg px-8 py-4 min-h-touch-lg", // 56px minimum height
+  touch: "text-ag-button-text px-6 py-3 min-h-touch-md w-full" // Full width mobile optimized
 };
 
 const fullWidthClass = fullWidth ? "w-full" : "max-w-fit";
 
-const baseClasses =
-  "rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2";
+const baseClasses = [
+  "rounded-xl font-ag-button-text font-semibold",
+  "inline-flex items-center justify-center",
+  "focus-visible:ring-4 focus-visible:ring-offset-2",
+  "transition-all duration-200 ease-in-out-soft",
+  "select-none cursor-pointer",
+  // Improved touch feedback for mobile
+  "active:scale-98 active:shadow-sm",
+  // Better disabled state
+  "disabled:active:scale-100 disabled:active:shadow-button"
+].join(" ");
 
 const classes = [
   variantClasses[variant],
@@ -55,36 +99,83 @@ const classes = [
   fullWidthClass,
   baseClasses,
   className,
-];
+].join(" ");
 ---
 
-{href ? (
-  <a 
+{href ? (  <a 
     href={href} 
     target={target} 
     rel={target === "_blank" ? "noopener noreferrer" : rel} 
     class:list={classes} 
     aria-label={ariaLabel}
     aria-describedby={ariaDescribedBy}
+    aria-disabled={disabled}
+    tabindex={disabled ? -1 : 0}
     {...props}
   >
     <span
-      class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
+      class={`font-ag-button-text text-ag-button-text ${flex ? "flex items-center gap-2" : "flex items-center"}`}
     >
+      {loading && (
+        <svg
+          class="animate-spin -ml-1 mr-2 h-4 w-4"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+      )}
       <slot />
     </span>
   </a>
-) : (
-  <button 
+) : (  <button 
     class:list={classes} 
-    disabled={disabled}
+    disabled={disabled || loading}
     aria-label={ariaLabel}
     aria-describedby={ariaDescribedBy}
+    type={props.type || "button"}
     {...props}
   >
     <span
-      class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
+      class={`font-ag-button-text text-ag-button-text ${flex ? "flex items-center gap-2" : "flex items-center"}`}
     >
+      {loading && (
+        <svg
+          class="animate-spin -ml-1 mr-2 h-4 w-4"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+      )}
       <slot />
     </span>
   </button>

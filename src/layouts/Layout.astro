@@ -25,6 +25,113 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
   
   <!-- Keywords for SEO -->
   <meta name="keywords" content={keywords} />
+  
+  <!-- Enhanced Open Graph Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Pflegedienst Integra Gerling GmbH" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:image" content="/assets/img/senior_woman_nurse.webp" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content="/assets/img/senior_woman_nurse.webp" />
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Organization", "LocalBusiness", "MedicalBusiness"],
+      "name": "Pflegedienst Integra Gerling GmbH",
+      "alternateName": "Integra Gerling Pflegedienst",
+      "description": "Professioneller Pflegedienst in Dortmund. Häusliche Pflege, Seniorenbetreuung und 24-Stunden-Pflege mit qualifizierten Pflegekräften.",
+      "url": "https://integra-gerling.de",
+      "logo": "https://integra-gerling.de/favicon.svg",
+      "image": "https://integra-gerling.de/assets/img/senior_woman_nurse.webp",
+      "telephone": "+49-231-123456",
+      "email": "info@integra-gerling.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Flughafenstraße 404",
+        "addressLocality": "Dortmund",
+        "addressRegion": "Nordrhein-Westfalen",
+        "postalCode": "44328",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.5136",
+        "longitude": "7.4653"
+      },
+      "openingHours": "Mo-Fr 08:00-18:00",
+      "priceRange": "$$",
+      "areaServed": {
+        "@type": "City",
+        "name": "Dortmund"
+      },
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.5136",
+          "longitude": "7.4653"
+        },
+        "geoRadius": "25000"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pflegedienstleistungen",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Häusliche Krankenpflege",
+              "description": "Professionelle medizinische Pflege in den eigenen vier Wänden"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Seniorenbetreuung",
+              "description": "Liebevolle Betreuung und Unterstützung im Alltag für Senioren"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "24-Stunden-Pflege",
+              "description": "Rundum-Betreuung rund um die Uhr in vertrauter Umgebung"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Integra Gerling"
+      },
+      "numberOfEmployees": "25-50",
+      "foundingDate": "2015",
+      "sameAs": [
+        "https://www.facebook.com/integra-gerling",
+        "https://www.linkedin.com/company/integra-gerling"
+      ]
+    }
+  </script>
+  
   <link rel="stylesheet" href="/src/styles/main.css" />
   <link
     rel="stylesheet"

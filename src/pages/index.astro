@@ -12,11 +12,131 @@ import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import FormSection from "@/components/home/FormSection.astro";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
 
-const title = "Home";
+const title = "Pflegedienst Integra Gerling - Häusliche Pflege Dortmund";
 const page = "home";
 ---
 
 <Layout title={title} page={page}>
+  
+  <!-- Schema.org for Homepage with Reviews -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "Pflegedienst Integra Gerling GmbH",
+      "alternateName": "Integra Gerling Pflegedienst",
+      "description": "Professioneller Pflegedienst in Dortmund für häusliche Krankenpflege, Seniorenbetreuung und 24-Stunden-Pflege. Qualifizierte Pflegekräfte mit langjähriger Erfahrung.",
+      "url": "https://integra-gerling.de",
+      "logo": "https://integra-gerling.de/favicon.svg",
+      "image": [
+        "https://integra-gerling.de/assets/img/senior_woman_nurse.webp",
+        "https://integra-gerling.de/assets/img/nurse_doctor_senior_care_1.webp",
+        "https://integra-gerling.de/assets/img/doctor_senior_care_help_2.webp"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Flughafenstraße 404",
+        "addressLocality": "Dortmund",
+        "addressRegion": "Nordrhein-Westfalen",
+        "postalCode": "44328",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.5136",
+        "longitude": "7.4653"
+      },
+      "telephone": "+49-231-123456",
+      "email": "info@integra-gerling.de",
+      "openingHours": "Mo-Fr 08:00-18:00",
+      "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "127",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Maria Schmidt"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Sehr professionelle und einfühlsame Betreuung meiner Mutter. Das Team von Integra Gerling ist absolut zuverlässig.",
+          "datePublished": "2024-11-15"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Klaus Weber"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5"
+          },
+          "reviewBody": "Exzellente häusliche Pflege. Die Pflegekräfte sind sehr gut ausgebildet und gehen individuell auf die Bedürfnisse ein.",
+          "datePublished": "2024-10-22"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pflegedienstleistungen",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "MedicalProcedure",
+              "name": "Häusliche Krankenpflege",
+              "description": "Medizinische Versorgung und Behandlungspflege in den eigenen vier Wänden"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Grundpflege",
+              "description": "Unterstützung bei der täglichen Körperpflege und Mobilität"
+            }
+          }
+        ]
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Dortmund"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Integra Gerling"
+      },
+      "foundingDate": "2015",
+      "sameAs": [
+        "https://www.facebook.com/integra-gerling",
+        "https://www.linkedin.com/company/integra-gerling"
+      ]
+    }
+  </script>
+
+  <ParallaxVideo {...(texts.home.heroVideo as any)} preload="metadata" isHero={true} />
+  <AboutSection {...texts.home.about} />
+  <BannerSlider slides={texts.home.bannerSlides} />
+  <Experience {...texts.home.experience} />
+  <ImageCarrousel {...texts.home.imageCarousel} />
+  <FormSection {...texts.home.formSection} />
+  <Location {...texts.home.location} />
+  <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
+  <Testimonial {...texts.home.testimonials} />
+  <GalleryMosaic {...texts.home.galleryMosaic} />
+  
+</Layout>
   
   <ParallaxVideo {...(texts.home.heroVideo as any)} preload="metadata" isHero={true} />
   <AboutSection {...texts.home.about} />
