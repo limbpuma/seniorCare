@@ -9,6 +9,9 @@ type Props = {
   size?: "small" | "medium" | "large";
   fullWidth?: boolean;
   flex?: boolean;
+  ariaLabel?: string;
+  ariaDescribedBy?: string;
+  disabled?: boolean;
 };
 
 const {
@@ -20,16 +23,19 @@ const {
   size = "medium",
   fullWidth = false,
   flex,
+  ariaLabel,
+  ariaDescribedBy,
+  disabled = false,
   ...props
 } = Astro.props;
 
 const variantClasses = {
   primary:
-    "text-white bg-deep-blue hover:bg-soft-blue focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:outline-none",
+    "text-white bg-deep-blue hover:bg-soft-blue focus:ring-4 focus:ring-blue-300 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed",
   secondary:
-    "text-deep-blue bg-white hover:bg-gray-blue focus:ring-2 focus:ring-offset-2 focus:ring-deep-blue focus:outline-none",
+    "text-deep-blue bg-white hover:bg-gray-blue focus:ring-4 focus:ring-gray-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed",
   accent:
-    "text-deep-blue bg-accent hover:bg-soft-orange focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:outline-none",
+    "text-deep-blue bg-accent hover:bg-soft-orange focus:ring-4 focus:ring-orange-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed",
 };
 
 const sizeClasses = {
@@ -41,7 +47,7 @@ const sizeClasses = {
 const fullWidthClass = fullWidth ? "w-full" : "max-w-fit";
 
 const baseClasses =
-  "rounded-full transition-colors duration-300 focus:outline-none";
+  "rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2";
 
 const classes = [
   variantClasses[variant],
@@ -53,7 +59,15 @@ const classes = [
 ---
 
 {href ? (
-  <a href={href} target={target} rel={target === "_blank" ? "noopener noreferrer" : rel} class:list={classes} {...props}>
+  <a 
+    href={href} 
+    target={target} 
+    rel={target === "_blank" ? "noopener noreferrer" : rel} 
+    class:list={classes} 
+    aria-label={ariaLabel}
+    aria-describedby={ariaDescribedBy}
+    {...props}
+  >
     <span
       class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
     >
@@ -61,7 +75,13 @@ const classes = [
     </span>
   </a>
 ) : (
-  <button class:list={classes} {...props}>
+  <button 
+    class:list={classes} 
+    disabled={disabled}
+    aria-label={ariaLabel}
+    aria-describedby={ariaDescribedBy}
+    {...props}
+  >
     <span
       class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
     >

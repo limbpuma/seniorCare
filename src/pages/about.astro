@@ -18,7 +18,7 @@ const page = "about";
   
   <BannerSection {...texts.about.banner} />
   <AboutSection {...texts.home.about} />
-  <ParallaxVideo {...texts.about.aboutVideo} />
+  <ParallaxVideo {...(texts.about.aboutVideo as any)} />
   <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
   <BannerSlider slides={texts.about.bannerSlider.slides} />
   <ExpertSection {...texts.about.expertSection} />

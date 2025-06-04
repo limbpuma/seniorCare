@@ -2,6 +2,7 @@
 import ContactForm from "../common/ContactForm.astro";
 import TextBlock from "../common/TextBlock.astro";
 import Section from "../common/Section.astro";
+
 interface FaqItem {
   question: string;
   answer: string;
@@ -16,6 +17,7 @@ interface Props {
     inputFields: {
       type: string;
       placeholder: string;
+      label?: string;
     }[];
     selectOptions: string[];
     textareaPlaceholder: string;
@@ -26,44 +28,66 @@ interface Props {
 const { title, subtitle, faqItems, contactForm } = Astro.props;
 ---
 
-<Section background="white"
-padding="large"
-width="full"
-height="auto"
-id="faq-section"
-animation="fade-in"
+<Section 
+  background="white"
+  padding="large"
+  width="full"
+  height="auto"
+  id="faq-section"
+  animation="fade-in"
 >
   <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <TextBlock
-      subtitle={subtitle}
-      title={title}
-      alignment="center"
-      textColor="text-deep-blue"
-    />
-      
+        subtitle={subtitle}
+        title={title}
+        alignment="center"
+        textColor="text-deep-blue"
+        headingLevel={1}
+        useSemanticHeadings={true}
+      />
     </div>
+    
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div class="space-y-6">
+      <!-- FAQ Accordion -->
+      <div class="space-y-6" role="region" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="sr-only">Häufig gestellte Fragen</h2>
         {
           faqItems.map((item, index) => (
-            <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border border-gray-200">
               <button
-                class="flex justify-between items-center w-full text-left"
-                onclick={`document.getElementById('faq-answer-${index}').classList.toggle('hidden')`}
+                class="flex justify-between items-center w-full text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${index}`}
+                id={`faq-button-${index}`}
+                data-faq-button={index}
               >
-                <h3 class="text-xl font-semibold text-gray-900">
+                <h3 class="text-xl font-semibold text-gray-900 pr-4">
                   {item.question}
                 </h3>
-                <i class="fas fa-chevron-down text-blue-500" />
+                <i 
+                  class="fas fa-chevron-down text-blue-500 transition-transform duration-200 flex-shrink-0" 
+                  aria-hidden="true"
+                  data-faq-icon={index}
+                />
               </button>
-              <p id={`faq-answer-${index}`} class="mt-4 text-gray-600 hidden">
-                {item.answer}
-              </p>
+              <div
+                id={`faq-answer-${index}`}
+                class="hidden mt-4"
+                role="region"
+                aria-labelledby={`faq-button-${index}`}
+                data-faq-content={index}
+              >
+                <p class="text-gray-600 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
             </div>
           ))
         }
       </div>
+      
+      <!-- Contact Form -->
       <div>
         <ContactForm
           image="/assets/img/shot_nurse_caring_senior_woman.webp"
@@ -74,3 +98,97 @@ animation="fade-in"
     </div>
   </div>
 </Section>
+
+<script>
+  // Enhanced FAQ accordion with proper accessibility
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqButtons = document.querySelectorAll('[data-faq-button]') as NodeListOf<HTMLButtonElement>;
+    
+    faqButtons.forEach((button, index) => {
+      button.addEventListener('click', function() {
+        const content = document.querySelector(`[data-faq-content="${index}"]`) as HTMLElement;
+        const icon = document.querySelector(`[data-faq-icon="${index}"]`) as HTMLElement;
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        // Close all other FAQ items
+        faqButtons.forEach((otherButton, otherIndex) => {
+          if (otherIndex !== index) {
+            const otherContent = document.querySelector(`[data-faq-content="${otherIndex}"]`) as HTMLElement;
+            const otherIcon = document.querySelector(`[data-faq-icon="${otherIndex}"]`) as HTMLElement;
+            
+            otherButton.setAttribute('aria-expanded', 'false');
+            otherContent?.classList.add('hidden');
+            otherIcon?.classList.remove('rotate-180');
+          }
+        });
+        
+        // Toggle current FAQ item
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          content?.classList.add('hidden');
+          icon?.classList.remove('rotate-180');
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          content?.classList.remove('hidden');
+          icon?.classList.add('rotate-180');
+        }
+      });
+      
+      // Handle keyboard navigation
+      button.addEventListener('keydown', function(e: KeyboardEvent) {
+        switch(e.key) {
+          case 'Enter':
+          case ' ':
+            e.preventDefault();
+            button.click();
+            break;
+          case 'ArrowDown':
+            e.preventDefault();
+            const nextButton = faqButtons[index + 1];
+            if (nextButton) {
+              nextButton.focus();
+            }
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            const prevButton = faqButtons[index - 1];
+            if (prevButton) {
+              prevButton.focus();
+            }
+            break;
+          case 'Home':
+            e.preventDefault();
+            const firstButton = faqButtons[0];
+            if (firstButton) {
+              firstButton.focus();
+            }
+            break;
+          case 'End':
+            e.preventDefault();
+            const lastButton = faqButtons[faqButtons.length - 1];
+            if (lastButton) {
+              lastButton.focus();
+            }
+            break;
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+  
+  /* Smooth transition for content */
+  [data-faq-content] {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Focus styles for better visibility */
+  [data-faq-button]:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+</style>

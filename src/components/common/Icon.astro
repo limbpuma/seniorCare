@@ -2,6 +2,8 @@
 interface IconData {
   name: string;
   href?: string;
+  ariaLabel?: string;
+  title?: string;
 }
 
 interface Props {
@@ -59,27 +61,52 @@ const variantClasses = {
   light: "text-white hover:text-[#F2B98A]",
   accent: "text-[#F2B98A] hover:text-[#ffffff]",
 };
+
+// Default ARIA labels for common icons
+const defaultAriaLabels: Record<string, string> = {
+  facebook: "Facebook",
+  twitter: "Twitter",
+  instagram: "Instagram",
+  linkedin: "LinkedIn",
+  youtube: "YouTube",
+  phone: "Telefon",
+  mapMarker: "Standort",
+  clock: "Öffnungszeiten",
+  envelope: "E-Mail",
+  globe: "Website",
+  send: "Senden",
+  close: "Schließen",
+};
 ---
 
 {
   icons.map((icon) => {
+    const ariaLabel = icon.ariaLabel || defaultAriaLabels[icon.name] || icon.name;
+    const title = icon.title || ariaLabel;
+    
     const IconComponent = (
       <i
         class={`${iconMap[icon.name] || ""} ${iconClass} ${variantClasses[variant]} transition-colors duration-300`}
+        aria-hidden="true"
+        title={title}
       />
     );
 
     return icon.href ? (
       <a
         href={icon.href}
-        class=" inline-block"
+        class="inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={ariaLabel}
+        title={title}
       >
         {IconComponent}
       </a>
     ) : (
-      <span class=" inline-block">{IconComponent}</span>
+      <span class="inline-block" aria-label={ariaLabel} title={title}>
+        {IconComponent}
+      </span>
     );
   })
 }

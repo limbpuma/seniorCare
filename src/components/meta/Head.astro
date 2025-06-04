@@ -1,24 +1,82 @@
 ---
 interface Props {
   title: string;
+  description?: string;
+  keywords?: string;
+  image?: string;
+  url?: string;
+  type?: string;
+  author?: string;
+  lang?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title,
+  description = "Professionelle Seniorenpflege und Betreuung mit erfahrenen Fachkräften. Wir bieten umfassende Pflegedienstleistungen für Senioren in ihrer gewohnten Umgebung.",
+  keywords = "Seniorenpflege, Altenpflege, häusliche Pflege, Pflegedienst, Betreuung Senioren, ambulante Pflege",
+  image,
+  url,
+  type = "website",
+  author = "SeniorCare Team",
+  lang = "de"
+} = Astro.props;
 ---
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Astro description" />
-  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+  <meta name="author" content={author} />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content={lang} />
+  
+  <!-- Accessibility -->
+  <meta name="theme-color" content="#1e3a8a" />
+  <meta name="color-scheme" content="light" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:locale" content="de_DE" />
+  {image && <meta property="og:image" content={image} />}
+  {url && <meta property="og:url" content={url} />}
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  {image && <meta name="twitter:image" content={image} />}
+  
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href={url} />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts with preload for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet"
   />
+  
+  <!-- Skip to main content styles -->
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 6px;
+      background: #1e3a8a;
+      color: white;
+      padding: 8px;
+      z-index: 100;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .skip-link:focus {
+      top: 6px;
+    }
+  </style>
 </head>

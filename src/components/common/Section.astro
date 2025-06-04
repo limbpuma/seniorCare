@@ -12,6 +12,9 @@ interface Props {
   class?: string;
   id?: string;
   animation?: AnimationType;
+  ariaLabel?: string;
+  ariaLabelledBy?: string;
+  role?: "region" | "banner" | "main" | "contentinfo" | "navigation" | "complementary";
 }
 
 const {
@@ -22,6 +25,9 @@ const {
   class: className,
   id,
   animation = "none",
+  ariaLabel,
+  ariaLabelledBy,
+  role,
   ...props
 } = Astro.props;
 
@@ -62,8 +68,11 @@ const innerClasses = [
 
 <section 
   id={id} 
-  class:list={[backgroundClasses[background], "w-full, animationClass"]}
+  class:list={[backgroundClasses[background], "w-full", animationClass]}
   style={`min-height: ${height};`} 
+  role={role}
+  aria-label={ariaLabel}
+  aria-labelledby={ariaLabelledBy}
   {...props}
 >
   <div class:list={innerClasses}>
