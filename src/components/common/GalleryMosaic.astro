@@ -3,6 +3,7 @@ import Button from "./Button.astro";
 import Icon from "../common/Icon.astro";
 import Section from "./Section.astro";
 import TextBlock from "./TextBlock.astro";
+
 interface Props {
   srcs: string[];
   subtitle: string;
@@ -10,45 +11,76 @@ interface Props {
   description: string;
   buttonText: string;
   class?: string;
+  altTexts?: string[]; // Add proper alt text support
 }
 
-const { srcs, subtitle, title, description, buttonText } = Astro.props;
+const { srcs, subtitle, title, description, buttonText, altTexts } = Astro.props;
+
+// Generate default alt texts if not provided
+const generateDefaultAltTexts = (srcs: string[]) => {
+  return srcs.map((_, index) => 
+    `Pflegedienst Integra - Professionelle Pflege und Betreuung, Bild ${index + 1}`
+  );
+};
+
+const finalAltTexts = altTexts || generateDefaultAltTexts(srcs);
 ---
 
-<Section background="white"
-padding="large"
-width="full"
-height="auto"
-id="experience-section"
-animation="grid-in"
+<Section 
+  background="white"
+  padding="large"
+  width="full"
+  height="auto"
+  id="experience-section"
+  animation="grid-in"
 >
   <div
     class="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-12"
   >
+    <!-- Content Section -->
     <div
       class="lg:w-1/3 flex flex-col justify-center items-center lg:items-start text-center lg:text-left"
     >
       <TextBlock
-      subtitle={subtitle}
-      title={title}
-      description={description}
-      alignment="left"
-      textColor="text-deep-blue"
-      
+        subtitle={subtitle}
+        title={title}
+        description={description}
+        alignment="left"
+        textColor="text-deep-blue"
+        headingLevel={2}
+        useSemanticHeadings={true}
       />
       
       <div class="mt-0 flex justify-center ">
-        <Button  href="https://www.instagram.com/pflegedienst.integra/" target="_blank" rel="noopener noreferrer"  
-         class="mt-2 lg:ml-8 md:mt-2 mx-auto md:mx-0">
-          <Icon icons={[{ name: "instagram" }]} size="small" variant="light"/>
+        <Button  
+          href="https://www.instagram.com/pflegedienst.integra/" 
+          target="_blank" 
+          rel="noopener noreferrer"  
+          class="mt-2 lg:ml-8 md:mt-2 mx-auto md:mx-0"
+          aria-label="Besuchen Sie unsere Instagram Seite (öffnet in neuem Tab)"
+        >
+          <Icon 
+            icons={[{ 
+              name: "instagram",
+              ariaLabel: "Instagram Icon"
+            }]} 
+            size="small" 
+            variant="light"
+          />
           {buttonText}
         </Button>
       </div>
     </div>
 
-    <div class="w-full lg:w-2/3 flex flex-col">
+    <!-- Gallery Section -->
+    <div class="w-full lg:w-2/3 flex flex-col" role="img" aria-labelledby="gallery-heading">
+      <h3 id="gallery-heading" class="sr-only">Bildergalerie unserer Pflegeleistungen</h3>
+      
+      <!-- Mobile Layout -->
       <div
         class="md:hidden grid grid-cols-2 grid-rows-3 gap-4 aspect-square mb-2"
+        role="group"
+        aria-label="Bildergalerie für mobile Geräte"
       >
         {
           srcs.map((src, index) => (
@@ -64,7 +96,7 @@ animation="grid-in"
               <img
                 src={src}
                 class="absolute inset-0 w-full h-full object-cover rounded-lg"
-                alt=""
+                alt={finalAltTexts[index] || `Pflegedienst Bild ${index + 1}`}
                 loading="lazy"
               />
             </div>
@@ -72,13 +104,18 @@ animation="grid-in"
         }
       </div>
 
-      <div class="hidden md:grid md:grid-cols-3 gap-4 h-[600px]">
+      <!-- Desktop Layout -->
+      <div 
+        class="hidden md:grid md:grid-cols-3 gap-4 h-[600px]"
+        role="group"
+        aria-label="Bildergalerie für Desktop"
+      >
         <div class="grid grid-rows-[7fr,3fr] gap-4">
           <div class="relative">
             <img
               src={srcs[0]}
               class="absolute inset-0 w-full h-full object-cover rounded-lg"
-              alt="image 1 section gallery"
+              alt={finalAltTexts[0] || "Professionelle Pflege - Hauptbild unserer Leistungen"}
               loading="lazy"
             />
           </div>
@@ -86,7 +123,7 @@ animation="grid-in"
             <img
               src={srcs[1]}
               class="absolute inset-0 w-full h-full object-cover rounded-lg"
-              alt="image 2 section gallery"
+              alt={finalAltTexts[1] || "Pflegekraft bei der Betreuung von Senioren"}
               loading="lazy"
             />
           </div>
@@ -95,7 +132,7 @@ animation="grid-in"
           <img
             src={srcs[2]}
             class="absolute inset-0 w-full h-full object-cover rounded-lg"
-            alt="image 3 section gallery"
+            alt={finalAltTexts[2] || "Einfühlsame Betreuung und medizinische Versorgung"}
             loading="lazy"
           />
         </div>
@@ -104,7 +141,7 @@ animation="grid-in"
             <img
               src={srcs[3]}
               class="absolute inset-0 w-full h-full object-cover rounded-lg"
-              alt="image 4 section gallery"
+              alt={finalAltTexts[3] || "Qualifizierte Pflegekräfte im Einsatz"}
               loading="lazy"
             />
           </div>
@@ -112,15 +149,12 @@ animation="grid-in"
             <img
               src={srcs[4]}
               class="absolute inset-0 w-full h-full object-cover rounded-lg"
-              alt="image 5 section gallery"
+              alt={finalAltTexts[4] || "Vertrauensvolle Pflege in gewohnter Umgebung"}
               loading="lazy"
             />
           </div>
         </div>
       </div>
-
-      
-      
     </div>
   </div>
 </Section>

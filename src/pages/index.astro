@@ -18,7 +18,7 @@ const page = "home";
 
 <Layout title={title} page={page}>
   
-  <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
+  <ParallaxVideo {...(texts.home.heroVideo as any)} preload="metadata" isHero={true} />
   <AboutSection {...texts.home.about} />
   <BannerSlider slides={texts.home.bannerSlides} />
   <Experience {...texts.home.experience} />

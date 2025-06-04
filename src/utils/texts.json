@@ -74,8 +74,7 @@
     }
   },
 
-  "home": {
-    "heroVideo": {
+  "home": {    "heroVideo": {
       "videoSrc": "/assets/video/nurse_talking_senior_wheelchair_4.webm",
       "subtitle": "Professionelle Pflege und Unterstützung",
       "title": "Selbstbestimmt zu Hause leben",
@@ -85,7 +84,9 @@
       "buttonText": "Jetzt Termin buchen",
       "buttonHref": "/contact",
       "buttonSize": "medium",
-      "buttonColor": "primary"
+      "buttonColor": "primary",
+      "videoDescription": "Empathisches Gespräch zwischen einer professionellen Pflegekraft und einem Senior im Rollstuhl. Die Szene zeigt die vertrauensvolle und respektvolle Beziehung, die das Fundament unserer häuslichen Pflege bildet.",
+      "transcriptUrl": "/assets/transcripts/hero-video-transcript.html"
     },
     "about": {
       "services": [
@@ -118,40 +119,39 @@
     },
     "imageCarousel": {
       "title": "Unsere Dienstleistungen",
-      "subtitle": "Umfassende Pflege und Betreuung",
-      "images": [
+      "subtitle": "Umfassende Pflege und Betreuung",      "images": [
         {
           "src": "/assets/img/doctor_senior_care_help_6.webp",
-          "alt": "Häusliche Pflege",
+          "alt": "Arzt bei der einfühlsamen Beratung einer Seniorin - professionelle häusliche Pflege mit medizinischer Kompetenz",
           "text": "Häusliche Pflege"
         },
         {
           "src": "/assets/img/doctor_senior_care_help_5.webp",
-          "alt": "Medizinische Versorgung",
+          "alt": "Medizinisches Fachpersonal bei der Gesundheitsversorgung zu Hause - qualifizierte medizinische Betreuung für Senioren",
           "text": "Medizinische Versorgung"
         },
         {
           "src": "/assets/img/nurse_doctor_senior_care_2.webp",
-          "alt": "Intensivpflege",
+          "alt": "Spezialisierte Pflegekräfte bei der Intensivpflege - professionelle medizinische Betreuung für komplexe Pflegebedürfnisse",
           "text": "Intensivpflege"
         },
         {
           "src": "/assets/img/nurse_doctor_senior_1.webp",
-          "alt": "Unterstützung und Begleitung",
+          "alt": "Pflegekraft leistet liebevolle Unterstützung im Alltag - persönliche Begleitung und emotionale Fürsorge für Senioren",
           "text": "Unterstützung und Begleitung"
         },
         {
           "src": "/assets/img/doctor_senior_care_help_2.webp",
-          "alt": "Sicherheitsbesuche",
+          "alt": "Professionelle Pflegekraft bei einem Sicherheitsbesuch - regelmäßige Kontrollen für das Wohlbefinden unserer Klienten",
           "text": "Sicherheitsbesuche"
         }
       ]
-    },
-    "formSection": {
+    },    "formSection": {
       "subtitle": "Kontaktieren Sie uns",
       "title": "Wir sind für Sie da - jederzeit",
       "description": "Haben Sie Fragen zu unseren Leistungen oder möchten Sie eine individuelle Beratung? Unser Team steht Ihnen jederzeit zur Verfügung.",
       "image": "/assets/img/shot_of_a_nurse_2.webp",
+      "imageAlt": "Professionelle Pflegekraft in freundlicher Arbeitskleidung - bereit für einfühlsame Beratung und individuelle Pflegeleistungen",
       "contactForm": {
         "title": "Ihre Fragen<br>Unser Expertenrat!",
         "inputFields": [
@@ -194,29 +194,28 @@
     },
     "imageCarousel_2": {
       "title": "Unser Team",
-      "subtitle": "Pflegekräfte mit Herz",
-      "images": [
+      "subtitle": "Pflegekräfte mit Herz",      "images": [
         {
           "src": "/assets/img/nurse_doctor_senior.webp",
-          "alt": "Lukas Müller",
+          "alt": "Lukas Müller - Professionelle Pflegefachkraft bei der Seniorenbetreuung",
           "title": "Lukas Müller",
           "text": "Pflegefachkraft"
         },
         {
           "src": "/assets/img/female_care_worker.webp",
-          "alt": "Tanja Schulz",
+          "alt": "Tanja Schulz - Erfahrene Altenpflegerin mit warmherziger Ausstrahlung",
           "title": "Tanja Schulz",
           "text": "Altenpflegerin"
         },
         {
           "src": "/assets/img/shot_of_a_nurse_2.webp",
-          "alt": "Karla Maier",
+          "alt": "Karla Maier - Qualifizierte Physiotherapeutin in professioneller Arbeitskleidung",
           "title": "Karla Maier",
           "text": "Physiotherapeut"
         },
         {
           "src": "/assets/img/senior_woman_talking_nurse.webp",
-          "alt": "Anna Becker",
+          "alt": "Anna Becker - Einfühlsame Ergotherapeutin im Gespräch mit einer Seniorin",
           "title": "Anna Becker",
           "text": "Ergotherapeutin"
         }
@@ -274,14 +273,16 @@
         { "label": "Startseite", "url": "/" },
         { "label": "Über Uns", "url": "/about" }
       ]
-    },
-    "aboutVideo": {
+    },    "aboutVideo": {
       "videoSrc": "/assets/video/social_worker_helps_wheelchair.webm",
       "subtitle": "Individuelle Pflege",
       "title": "Häusliche Pflege",
       "description": "Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung und unterstützen Sie in Ihrer gewohnten Umgebung.",
       "alignment": "center",
-      "textColor": "text-deep-blue"
+      "textColor": "text-deep-blue",
+      "videoDescription": "Sozialarbeiterin hilft einer älteren Person im Rollstuhl. Die Szene zeigt die professionelle und einfühlsame Unterstützung, die unsere Pflegekräfte täglich leisten, um die Mobilität und Selbstständigkeit unserer Klienten zu fördern.",
+      "transcriptUrl": "/assets/transcripts/about-video-transcript.html",
+      "captionTrack": "/assets/captions/about-video-captions.vtt"
     },
     "bannerSlider": {
       "slides": [
@@ -372,42 +373,43 @@
         { "icon": "fa-solid fa-chess", "text": "Mentale Anregung" },
         { "icon": "fa-solid fa-users", "text": "Soziale Interaktion" }
       ]
-    },
-    "servicesVideo": {
+    },    "servicesVideo": {
       "videoSrc": "/assets/video/nurse_talking_senior_wheelchair_2.webm",
       "subtitle": "Professionelle Unterstützung",
       "title": "Selbstständig bleiben",
       "description": "Unsere Pflegekräfte unterstützen Sie individuell, damit Sie selbstbestimmt zu Hause leben können.",
       "alignment": "center",
-      "textColor": "text-deep-blue"
-    },
-    "imageCarousel_3": {
+      "textColor": "text-deep-blue",
+      "videoDescription": "Krankenschwester im einfühlsamen Gespräch mit einem Senior im Rollstuhl. Diese Interaktion zeigt unsere patientenzentrierte Herangehensweise und die vertrauensvolle Beziehung zwischen Pflegekraft und Klient.",
+      "transcriptUrl": "/assets/transcripts/services-video-transcript.html",
+      "captionTrack": "/assets/captions/services-video-captions.vtt"
+    },    "imageCarousel_3": {
       "subtitle": "Außergewöhnliche Pflege",
       "title": "Unsere Top-Leistungen",
       "offerings": [
         {
           "src": "/assets/img/shot_of_a_nurse_1.webp",
-          "alt": "Häusliche Pflege",
+          "alt": "Qualifizierte Pflegefachkraft bei der häuslichen Betreuung - professionelle und einfühlsame Pflege zu Hause",
           "text": "Häusliche Pflege"
         },
         {
           "src": "/assets/img/nurse_doctor_senior_care.webp",
-          "alt": "Gesundheitsdienstleistungen",
+          "alt": "Krankenschwester und Arzt im Gespräch über medizinische Versorgung - kompetente Gesundheitsdienstleistungen für Senioren",
           "text": "Gesundheitsdienstleistungen"
         },
         {
           "src": "/assets/img/doctor_senior_care_tablet.webp",
-          "alt": "Mahlzeitendienste",
+          "alt": "Seniorin mit Pflegekraft beim gemeinsamen Besprechen von Mahlzeitenplänen - individuelle Ernährungsberatung und Mahlzeitendienste",
           "text": "Mahlzeitendienste"
         },
         {
           "src": "/assets/img/shot_nurse_caring_senior_woman.webp",
-          "alt": "Hauswirtschaft",
+          "alt": "Einfühlsame Pflegekraft bei der Betreuung einer Seniorin - vertrauensvolle Hauswirtschaftshilfe und persönliche Assistenz",
           "text": "Hauswirtschaft"
         },
         {
           "src": "/assets/img/shot_of_a_nurse_2.webp",
-          "alt": "Demenzbetreuung",
+          "alt": "Spezialisierte Pflegekraft für Demenzbetreuung - professionelle und geduldige Begleitung bei kognitiven Herausforderungen",
           "text": "Demenzbetreuung"
         }
       ]

@@ -15,6 +15,9 @@ interface Props {
   buttonVariant?: "primary" | "secondary" | "accent";
   buttonSize?: "small" | "medium" | "large";
   buttonHref?: string;
+  // New props for proper heading hierarchy
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  useSemanticHeadings?: boolean;
 }
 
 const {
@@ -30,7 +33,9 @@ const {
   buttonText,
   buttonVariant = "primary",
   buttonSize = "medium",
-  buttonHref
+  buttonHref,
+  headingLevel = 2,
+  useSemanticHeadings = true
 } = Astro.props;
 
 const alignmentClasses = {
@@ -40,28 +45,31 @@ const alignmentClasses = {
 };
 
 const alignmentClass = alignmentClasses[alignment];
+
+// Generate appropriate heading tags based on semantic hierarchy
+const getHeadingTag = (level: number) => {
+  const validLevel = Math.min(Math.max(level, 1), 6);
+  return `h${validLevel}`;
+};
+
+const subtitleTag = useSemanticHeadings ? getHeadingTag(headingLevel) : 'p';
+const titleTag = useSemanticHeadings ? getHeadingTag(headingLevel + (subtitle ? 1 : 0)) : 'h2';
+const secondTitleTag = useSemanticHeadings ? getHeadingTag(headingLevel + (subtitle ? 2 : 1)) : 'h3';
+const thirdTitleTag = useSemanticHeadings ? getHeadingTag(headingLevel + (subtitle ? 3 : 2)) : 'h4';
 ---
 
 <div class={`${alignmentClass} ${textColor} max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 `}>
   {subtitle && (
-    <h3 class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4">
-      {subtitle}
-    </h3>
+    <Fragment set:html={`<${subtitleTag} class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4${useSemanticHeadings ? ' text-gray-600' : ''}">${subtitle}</${subtitleTag}>`} />
   )}
   {title && (
-    <h2 class="text-ag-h4 sm:text-ag-h3 md:text-ag-h2 lg:text-[56px] xl:text-[60px] font-ag-h2 mb-4 sm:mb-6 md:mb-8 leading-tight">
-      {title}
-    </h2>
+    <Fragment set:html={`<${titleTag} class="text-ag-h4 sm:text-ag-h3 md:text-ag-h2 lg:text-[56px] xl:text-[60px] font-ag-h2 mb-4 sm:mb-6 md:mb-8 leading-tight">${title}</${titleTag}>`} />
   )}
   {secondTitle && (
-    <h3 class="text-ag-h5 sm:text-ag-h4 md:text-ag-h3 lg:text-[40px] xl:text-[44px] font-ag-h3 mb-3 sm:mb-4 md:mb-6 leading-tight">
-      {secondTitle}
-    </h3>
+    <Fragment set:html={`<${secondTitleTag} class="text-ag-h5 sm:text-ag-h4 md:text-ag-h3 lg:text-[40px] xl:text-[44px] font-ag-h3 mb-3 sm:mb-4 md:mb-6 leading-tight">${secondTitle}</${secondTitleTag}>`} />
   )}
   {thirdTitle && (
-    <h4 class="text-ag-body-text sm:text-ag-h5 md:text-ag-h4 lg:text-[32px] xl:text-[34px] font-ag-h4 mb-2 sm:mb-3 md:mb-4 leading-tight">
-      {thirdTitle}
-    </h4>
+    <Fragment set:html={`<${thirdTitleTag} class="text-ag-body-text sm:text-ag-h5 md:text-ag-h4 lg:text-[32px] xl:text-[34px] font-ag-h4 mb-2 sm:mb-3 md:mb-4 leading-tight">${thirdTitle}</${thirdTitleTag}>`} />
   )}
   {description && (
     <p class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
@@ -75,7 +83,7 @@ const alignmentClass = alignmentClasses[alignment];
   )}
   {testimonial && (
     <blockquote class="text-ag-testimonial-text font-ag-testimonial-text italic mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto">
-      "{testimonial}"
+      <p>"{testimonial}"</p>
     </blockquote>
   )}
   {buttonText && (

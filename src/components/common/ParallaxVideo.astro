@@ -3,9 +3,41 @@ import Section from "./Section.astro";
 import TextBlock from "./TextBlock.astro";
 import ParallaxMedia from "./ParallaxMedia.astro";
 
+interface Props {
+  subtitle: string;
+  title: string;
+  description: string;
+  videoSrc: string;
+  posterSrc?: string;
+  alignment?: "left" | "center" | "right";
+  textColor?: string;
+  buttonHref?: string;
+  buttonSize?: "small" | "medium" | "large";
+  buttonVariant?: "primary" | "secondary" | "accent";
+  buttonText?: string;
+  buttonColor?: string;  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+  videoDescription?: string;
+  preload?: string;
+  isHero?: boolean; // New prop to determine if this is the main hero section
+}
 
-
-const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor ,buttonHref, buttonSize, buttonVariant, buttonText} = Astro.props;
+const { 
+  subtitle, 
+  title, 
+  description, 
+  videoSrc, 
+  posterSrc, 
+  alignment = "center",
+  textColor = "white",
+  buttonHref, 
+  buttonSize, 
+  buttonVariant, 
+  buttonText,
+  buttonColor,  headingLevel = 1,
+  videoDescription,
+  preload,
+  isHero = false
+} = Astro.props;
 ---
 
 <Section
@@ -14,12 +46,18 @@ const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor 
   height="h-screen"
   id="hero-parallax-section"
   class="relative overflow-hidden"
+  role="region"
+  ariaLabel={isHero ? "Hero-Bereich mit Hintergrundvideo" : "Video-Bereich"}
 >
-  <div class="absolute inset-0 w-full h-full parallax-container ">
-    <ParallaxMedia 
+  <div 
+    class="absolute inset-0 w-full h-full parallax-container"
+    role="img" 
+    aria-label={videoDescription || "Hintergrundvideo zur visuellen Darstellung unserer Dienstleistungen"}
+  >    <ParallaxMedia 
       type="video" 
       src={videoSrc}
       posterSrc={posterSrc}
+      preload={preload}
     />
   </div>
   <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start">
@@ -34,8 +72,9 @@ const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor 
         buttonVariant={buttonVariant}
         buttonSize={buttonSize}
         buttonHref={buttonHref}
+        headingLevel={headingLevel}
+        useSemanticHeadings={true}
       />
-      
     </div>
   </div>
 </Section>

@@ -1,35 +1,60 @@
 ---
-import Button from "../common/Button.astro";
 import Icon from "../common/Icon.astro";
 import Section from "../common/Section.astro";
 import TextBlock from "../common/TextBlock.astro";
 
-const { heading, title, description, buttonText, icontext } = Astro.props;
+interface Props {
+  heading: string;
+  title: string;
+  description: string;
+  buttonText: string;
+  icontext: string;
+  headingLevel?: 2 | 3 | 4 | 5 | 6;
+  imageAlt?: string;
+}
+
+const { 
+  heading, 
+  title, 
+  description, 
+  buttonText, 
+  icontext, 
+  headingLevel = 2,
+  imageAlt 
+} = Astro.props;
 ---
 
 <Section 
-background="white"
+  background="white"
   padding="large"
   width="full"
   height="auto"
   id="experience-section"
   animation="slide-in"
-  >
+  role="region"
+  ariaLabel="Unsere Erfahung und Expertise"
+>
   <div class="py-6 flex flex-col lg:flex-row items-center lg:justify-between">
-    <div class="relative w-full lg:w-1/2 bg-gray-200">
+    <div class="relative w-full lg:w-1/2 bg-gray-200" role="img" aria-labelledby="experience-image-caption">
       <img
         src="/assets/img/nurse_doctor_senior_care.webp"
-        alt="Image Description"
+        alt={imageAlt || "Professionelle Krankenschwester und Ärztin bei der Betreuung eines Seniors"}
         class="w-full h-full object-cover"
         loading="lazy"
-      />
-      <div
+      />      <div
         class="absolute w-2/5 bottom-0 left-0 bg-deep-blue p-12 flex flex-col items-center text-soft-orange"
+        role="img"
+        aria-label="Besonderheit unserer Dienstleistung"
       >
-        <div class="transform scale-150 mb-4">
+        <div class="transform scale-150 mb-4" aria-hidden="true">
           <Icon icons={[{ name: "handhelp" }]} size="xl" variant="light"/>
         </div>
-        <p class="text-white ag-h5 font-ag-h5 font-bold">{icontext}</p>
+        <p 
+          class="text-white ag-h5 font-ag-h5 font-bold"
+          id="experience-image-caption"
+        >
+          {icontext}
+        </p>
       </div>
     </div>
     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12">
@@ -43,8 +68,9 @@ background="white"
         buttonVariant="primary"
         buttonSize="medium"
         buttonHref="/services"
-        />
-      
+        headingLevel={headingLevel}
+        useSemanticHeadings={true}
+      />
     </div>
   </div>
 </Section>
