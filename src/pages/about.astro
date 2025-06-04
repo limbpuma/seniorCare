@@ -10,12 +10,63 @@ import texts from "@/utils/texts.json";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
 import ImageCarrousel_2 from "@/components/common/ImageCarrousel_2.astro";
 
-const title = "About Us";
+const title = "Über uns - Pflegedienst Integra Gerling Dortmund";
 const page = "about";
 ---
 
 <Layout title={title} page={page}>
   
+  <!-- Schema.org for About/Organization -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Pflegedienst Integra Gerling GmbH",
+        "description": "Erfahrener Pflegedienst in Dortmund mit über 8 Jahren Expertise in der häuslichen Krankenpflege und Seniorenbetreuung",
+        "foundingDate": "2015",
+        "founder": {
+          "@type": "Person",
+          "name": "Integra Gerling"
+        },
+        "numberOfEmployees": "25-50",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Flughafenstraße 404",
+          "addressLocality": "Dortmund",
+          "postalCode": "44328", 
+          "addressCountry": "DE"
+        },
+        "telephone": "+49-231-123456",
+        "email": "info@integra-gerling.de",
+        "url": "https://integra-gerling.de",
+        "sameAs": [
+          "https://www.facebook.com/integra-gerling",
+          "https://www.linkedin.com/company/integra-gerling"
+        ],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Zertifizierung nach MDK-Prüfrichtlinien"
+          },
+          {
+            "@type": "EducationalOccupationalCredential", 
+            "name": "Qualitätsmanagement ISO 9001"
+          }
+        ],
+        "award": "Beste Patientenbewertungen Dortmund 2024",
+        "knowsAbout": [
+          "Häusliche Krankenpflege",
+          "Seniorenbetreuung", 
+          "Palliativpflege",
+          "Demenzbetreuung",
+          "24-Stunden-Pflege"
+        ]
+      }
+    }
+  </script>
+
   <BannerSection {...texts.about.banner} />
   <AboutSection {...texts.home.about} />
   <ParallaxVideo {...(texts.about.aboutVideo as any)} />

@@ -4,11 +4,73 @@ import BannerSection from "@/components/common/BannerSection.astro";
 import FaqContent from "@/components/faq/FaqContent.astro";
 import texts from "@/utils/texts.json";
 
-const title = "FAQ";
+const title = "Häufige Fragen - Pflegedienst Integra Gerling FAQ";
 const page = "faq";
 ---
 
 <Layout title={title} page={page}>
+  
+  <!-- Schema.org for FAQ -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Welche Pflegeleistungen bietet Integra Gerling an?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wir bieten häusliche Krankenpflege, Grundpflege, Behandlungspflege, 24-Stunden-Betreuung, Verhinderungspflege und spezialisierte Demenzbetreuung in Dortmund und Umgebung."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Übernimmt die Krankenkasse die Kosten für häusliche Pflege?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, bei anerkanntem Pflegegrad übernimmt die Pflegekasse einen Großteil der Kosten. Wir rechnen direkt mit Ihrer Krankenkasse ab und beraten Sie gerne zu den Finanzierungsmöglichkeiten."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie schnell kann die häusliche Pflege beginnen?",
+          "acceptedAnswer": {
+            "@type": "Answer", 
+            "text": "In der Regel können wir innerhalb von 24-48 Stunden mit der Pflege beginnen. Bei Notfällen ist oft eine sofortige Versorgung möglich."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Sind Ihre Pflegekräfte qualifiziert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Alle unsere Pflegekräfte sind examiniert und verfügen über entsprechende Qualifikationen. Wir bilden unser Personal kontinuierlich weiter und achten auf höchste Qualitätsstandards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "In welchen Gebieten sind Sie tätig?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wir sind hauptsächlich in Dortmund und im Umkreis von 25 km tätig. Dazu gehören auch die umliegenden Gemeinden in Nordrhein-Westfalen."
+          }
+        }
+      ],
+      "about": {
+        "@type": "Organization", 
+        "name": "Pflegedienst Integra Gerling GmbH",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Flughafenstraße 404",
+          "addressLocality": "Dortmund", 
+          "postalCode": "44328",
+          "addressCountry": "DE"
+        }
+      }
+    }
+  </script>
+
   <BannerSection {...texts.faq.banner} />
   <FaqContent {...texts.faq.faqContent} />
 </Layout>

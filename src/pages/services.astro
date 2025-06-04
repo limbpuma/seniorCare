@@ -8,11 +8,72 @@ import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import texts from "@/utils/texts.json";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
 
-const title = "Services";
+const title = "Pflegeleistungen - Häusliche Pflege & Seniorenbetreuung";
 const page = "services";
 ---
 
 <Layout title={title} page={page}>
+  <!-- Schema.org for Services -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Pflegedienstleistungen",
+      "description": "Umfassende häusliche Pflege und Seniorenbetreuung durch qualifizierte Pflegekräfte in Dortmund und Umgebung",
+      "provider": {
+        "@type": "Organization",
+        "name": "Pflegedienst Integra Gerling GmbH",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Flughafenstraße 404",
+          "addressLocality": "Dortmund",
+          "postalCode": "44328",
+          "addressCountry": "DE"
+        }
+      },
+      "serviceType": "Häusliche Krankenpflege",
+      "areaServed": "Dortmund",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pflegeleistungen",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Grundpflege",
+              "description": "Hilfe bei der Körperpflege, Ernährung und Mobilität"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Behandlungspflege",
+              "description": "Medizinische Versorgung nach ärztlicher Verordnung"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "24-Stunden-Betreuung",
+              "description": "Rundum-Betreuung in den eigenen vier Wänden"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Verhinderungspflege",
+              "description": "Entlastung für pflegende Angehörige"
+            }
+          }
+        ]
+      }
+    }
+  </script>
+
   <BannerSection {...texts.services.banner} />
   
   <DiscoverIcons {...texts.about.discoverIcons} />

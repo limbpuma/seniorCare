@@ -1,40 +1,39 @@
-{
-  "seo": {
+{  "seo": {
     "home": {
-      "description": "Integra bietet hochwertige, selbstbestimmte Pflegekonzepte in Dortmund. Unsere empathische Pflegephilosophie sorgt für erstklassige medizinische Versorgung und familiäre Atmosphäre.",
-      "keywords": "Pflege, Betreuung, Dortmund, selbstbestimmt, medizinische Versorgung"
+      "description": "Pflegedienst Integra Gerling in Dortmund - Professionelle häusliche Krankenpflege, Seniorenbetreuung und 24-Stunden-Pflege. Qualifizierte Pflegekräfte für selbstbestimmtes Leben zu Hause.",
+      "keywords": "Pflegedienst Dortmund, häusliche Pflege, Seniorenbetreuung, 24-Stunden-Pflege, ambulante Pflege, Krankenpflege zu Hause, Integra Gerling, Pflege NRW"
     },
     "about": {
-      "description": "Erfahren Sie mehr über Integra, unseren Pflegedienst in Dortmund, und wie wir durch individuelle Pflegekonzepte die Lebensqualität unserer Klienten verbessern.",
-      "keywords": "Pflegedienst, Über Uns, Pflege in Dortmund, Betreuungskonzepte"
+      "description": "Über Pflegedienst Integra Gerling Dortmund - Erfahrenes Team mit über 8 Jahren Expertise in häuslicher Krankenpflege und individueller Seniorenbetreuung.",
+      "keywords": "Pflegedienst Über uns, Integra Gerling Team, Pflegeerfahrung Dortmund, qualifizierte Pflegekräfte, Pflegequalität"
     },
     "services": {
-      "description": "Integra bietet professionelle häusliche Pflege in Dortmund, darunter Beatmungspflege, Intensivpflege, ärztliche Behandlungspflege und mehr.",
-      "keywords": "Pflege, Leistungen, Beatmungspflege, Intensivpflege, ärztliche Pflege, Dortmund"
+      "description": "Pflegeleistungen Integra Gerling Dortmund - Häusliche Krankenpflege, Grundpflege, Behandlungspflege, Verhinderungspflege und spezialisierte Demenzbetreuung.",
+      "keywords": "Pflegeleistungen, häusliche Krankenpflege, Grundpflege, Behandlungspflege, Verhinderungspflege, Demenzbetreuung, Palliativpflege, Intensivpflege Dortmund"
     },
     "contact": {
-      "description": "Kontaktieren Sie Integra für individuelle Pflegeangebote in Dortmund. Wir sind 24/7 für Sie erreichbar.",
-      "keywords": "Kontakt, Pflege, Dortmund, Telefonnummer, Email"
+      "description": "Kontakt Pflegedienst Integra Gerling Dortmund - Flughafenstraße 404, 44328 Dortmund. Rufen Sie uns an für individuelle Pflegeberatung und kostenlose Erstberatung.",
+      "keywords": "Pflegedienst Kontakt Dortmund, Integra Gerling Telefon, Pflegeberatung, kostenlose Erstberatung, Flughafenstraße Dortmund"
     },
     "faq": {
-      "description": "Häufig gestellte Fragen zur Pflege bei Integra in Dortmund. Erfahren Sie mehr über unsere Dienstleistungen und Prozesse.",
-      "keywords": "FAQ, Pflege, Fragen und Antworten, Integra, Dortmund"
+      "description": "Häufige Fragen zu Pflegedienst Integra Gerling - Antworten zu Kosten, Pflegegraden, Krankenkassenabrechnung und Pflegeleistungen in Dortmund.",
+      "keywords": "Pflege FAQ, Pflegekosten, Pflegegrade, Krankenkasse Abrechnung, häusliche Pflege Fragen, Pflegedienst Dortmund FAQ"
     },
     "datenschutz": {
-      "description": "Erfahren Sie, wie Integra mit Ihren persönlichen Daten umgeht und welche Datenschutzrichtlinien gelten.",
-      "keywords": "Datenschutz, persönliche Daten, Datenschutzrichtlinien, Integra"
+      "description": "Datenschutzerklärung Pflegedienst Integra Gerling - Wie wir Ihre persönlichen Daten bei der Pflegeversorgung schützen und verarbeiten.",
+      "keywords": "Datenschutz Pflege, persönliche Daten Pflegedienst, DSGVO Pflege, Datenschutzerklärung Integra Gerling"
     },
     "impressum": {
-      "description": "Impressum der Integra Pflegedienstleistungen in Dortmund. Rechtliche Informationen und Kontaktdaten.",
-      "keywords": "Impressum, rechtliche Informationen, Integra, Dortmund"
+      "description": "Impressum Pflegedienst Integra Gerling GmbH - Rechtliche Angaben und Verantwortlichkeiten des Pflegedienstes in Dortmund.",
+      "keywords": "Impressum Pflegedienst, Integra Gerling GmbH, rechtliche Angaben, Pflegedienst Dortmund Impressum"
     },
     "Agb": {
-      "description": "Allgemeine Geschäftsbedingungen von Integra in Dortmund. Erfahren Sie mehr über die rechtlichen Grundlagen unserer Pflegeleistungen.",
-      "keywords": "AGB, Geschäftsbedingungen, Pflegeleistungen, Integra, Dortmund"
+      "description": "Allgemeine Geschäftsbedingungen Pflegedienst Integra Gerling - Rechtliche Grundlagen für Pflegeleistungen und Betreuungsverträge.",
+      "keywords": "AGB Pflegedienst, Geschäftsbedingungen Pflege, Pflegevertrag Bedingungen, Integra Gerling AGB"
     },
     "404": {
-      "description": "Seite nicht gefunden. Bitte überprüfen Sie die URL oder kehren Sie zur Startseite zurück.",
-      "keywords": "404, Seite nicht gefunden, Fehler"
+      "description": "Seite nicht gefunden - Pflegedienst Integra Gerling Dortmund. Zurück zur Startseite für Informationen über häusliche Pflege und Seniorenbetreuung.",
+      "keywords": "404 Fehler, Seite nicht gefunden, Pflegedienst Dortmund, Integra Gerling"
     }
   },
   "header": {

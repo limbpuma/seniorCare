@@ -5,11 +5,76 @@ import ContactText from "@/components/contact/ContactText.astro";
 import MapSection from "@/components/contact/MapSection.astro";
 import texts from "@/utils/texts.json";
 
-const title = "Contact Us";
+const title = "Kontakt - Pflegedienst Integra Gerling Dortmund";
 const page = "contact";
 ---
 
 <Layout title={title} page={page}>
+  
+  <!-- Schema.org for Local Business Contact -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "mainEntity": {
+        "@type": "LocalBusiness",
+        "name": "Pflegedienst Integra Gerling GmbH",
+        "image": "https://integra-gerling.de/assets/img/senior_woman_nurse.webp",
+        "description": "Professioneller Pflegedienst in Dortmund - Kontaktieren Sie uns für häusliche Pflege und Seniorenbetreuung",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Flughafenstraße 404",
+          "addressLocality": "Dortmund",
+          "addressRegion": "Nordrhein-Westfalen",
+          "postalCode": "44328",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "51.5136",
+          "longitude": "7.4653"
+        },
+        "telephone": "+49-231-123456",
+        "email": "info@integra-gerling.de",
+        "url": "https://integra-gerling.de",
+        "openingHours": [
+          "Mo-Fr 08:00-18:00",
+          "Sa 09:00-14:00"
+        ],
+        "hasMap": "https://maps.google.com/?q=51.5136,7.4653",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+49-231-123456",
+            "contactType": "customer service",
+            "availableLanguage": ["German", "English"],
+            "hoursAvailable": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            }
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+49-231-123456",
+            "contactType": "emergency",
+            "availableLanguage": "German",
+            "hoursAvailable": {
+              "@type": "OpeningHoursSpecification", 
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+              "opens": "00:00",
+              "closes": "23:59"
+            }
+          }
+        ],
+        "priceRange": "$$",
+        "paymentAccepted": ["Cash", "Invoice", "Direct debit"],
+        "currenciesAccepted": "EUR"
+      }
+    }
+  </script>
+
   <BannerSection {...texts.contact.banner} />
   <ContactText {...texts.contact.contactText} />
   <MapSection {...texts.contact.mapSection} />

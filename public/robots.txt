@@ -1,4 +1,15 @@
 User-agent: *
+Allow: /
 Disallow: /admin/
-Disallow: /wp-login.php
-Sitemap: https://www.pflegedienst-integra.de/sitemap.xml
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /dist/
+
+# SEO-optimized crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://integra-gerling.de/sitemap.xml
+
+# Additional sitemaps (for future expansion)
+# Sitemap: https://integra-gerling.de/blog-sitemap.xml
