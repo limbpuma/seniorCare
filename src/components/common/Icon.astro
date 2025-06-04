@@ -11,6 +11,8 @@ interface Props {
   size?: "tiny" | "small" | "medium" | "large" | "xl";
   customSize?: string;
   variant?: "default" | "light" | "accent";
+  /** Optional touch target size (w-touch-*) for accessibility */
+  touchSize?: "sm" | "md" | "lg" | "xl";
 }
 
 const {
@@ -18,7 +20,8 @@ const {
   size = "medium",
   customSize,
   variant = "default",
-} = Astro.props;
+  touchSize,
+} = Astro.props as Props;
 
 const sizes = {
   tiny: "text-xs",
@@ -29,6 +32,10 @@ const sizes = {
 };
 
 const iconClass = customSize ? customSize : sizes[size] || sizes.medium;
+
+const touchClasses = touchSize
+  ? `w-touch-${touchSize} h-touch-${touchSize} flex items-center justify-center`
+  : "";
 
 const iconMap: Record<string, string> = {
   facebook: "fab fa-facebook",
@@ -95,7 +102,7 @@ const defaultAriaLabels: Record<string, string> = {
     return icon.href ? (
       <a
         href={icon.href}
-        class="inline-block focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded"
+        class={`inline-flex ${touchClasses} focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={ariaLabel}
@@ -103,7 +110,7 @@ const defaultAriaLabels: Record<string, string> = {
       >
         {IconComponent}
       </a>    ) : (
-      <span class="inline-block" title={title}>
+      <span class={`inline-flex ${touchClasses}`} title={title}>
         {IconComponent}
       </span>
     );

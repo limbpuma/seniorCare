@@ -1,7 +1,7 @@
-diff --git a//dev/null b/docs/ui-ux-report.md
+diff --git a//dev/null b/reports/docs/ui-ux-report.md
 index 0000000000000000000000000000000000000000..940ca10a90464a79801271194b583086e8bd06ba 100644
 --- a//dev/null
-+++ b/docs/ui-ux-report.md
++++ b/reports/docs/ui-ux-report.md
 @@ -0,0 +1,50 @@
 +# Informe para Mejorar la UI/UX Moderna
 +
