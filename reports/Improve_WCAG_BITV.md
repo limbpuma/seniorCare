@@ -31,14 +31,14 @@ index 1db3fb3991a8968a9505a8972b3d9a503eaa43f9..41d72d21c7036c84610fca7a5d7f7603
 +
 +## Accessibility
 +
-+Weitere Hinweise zur Umsetzung der Barrierefreiheit nach WCAG und BITV finden Sie in der Datei [docs/BARRIERFREIHEIT.md](docs/BARRIERFREIHEIT.md).
++Weitere Hinweise zur Umsetzung der Barrierefreiheit nach WCAG und BITV finden Sie in der Datei [reports/docs/BARRIERFREIHEIT.md](reports/docs/BARRIERFREIHEIT.md).
 
 
 
-diff --git a//dev/null b/docs/BARRIERFREIHEIT.md
+diff --git a//dev/null b/reports/docs/BARRIERFREIHEIT.md
 index 0000000000000000000000000000000000000000..131c7471f0f0bb3bf2be2008d20cec0f8a9d5e87 100644
 --- a//dev/null
-+++ b/docs/BARRIERFREIHEIT.md
++++ b/reports/docs/BARRIERFREIHEIT.md
 @@ -0,0 +1,60 @@
 +# Barrierefreiheit in Deutschland: WCAG und BITV
 +
