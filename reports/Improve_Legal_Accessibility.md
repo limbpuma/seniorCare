@@ -3,7 +3,7 @@
 Este documento recopila recomendaciones para garantizar el cumplimiento de los principales marcos legales de accesibilidad web, en especial WCAG 2.1/2.2 nivel AA y la norma europea EN 301 549.
 
 ## 1. Estado Actual
-- El proyecto incluye mejoras descritas en `docs/PHASE_2_ACCESSIBILITY_COMPLETION_SUMMARY.md` con **0 violaciones** al evaluar con axe-core bajo WCAG 2.1 AA.
+- El proyecto incluye mejoras descritas en `reports/docs/PHASE_2_ACCESSIBILITY_COMPLETION_SUMMARY.md` con **0 violaciones** al evaluar con axe-core bajo WCAG 2.1 AA.
 - No hay evidencia de una evaluación formal de WCAG 2.2 ni de la norma EN 301 549.
 
 ## 2. Requisitos Legales Clave
@@ -26,7 +26,7 @@ Este documento recopila recomendaciones para garantizar el cumplimiento de los p
 
 ## 4. Próximos Pasos
 1. **Ajustar estilos de iconos** en `Header.astro` y `Footer.astro` para ampliar su área interactiva.
-2. **Ejecutar auditorías completas** de WCAG 2.1 y 2.2 AA, documentando los resultados en `docs/`.
+2. **Ejecutar auditorías completas** de WCAG 2.1 y 2.2 AA, documentando los resultados en `reports/docs/`.
 3. **Actualizar la declaración de accesibilidad** para incluir referencias a EN 301 549 y las fechas de las pruebas realizadas.
 
 ## 5. Recursos Útiles
